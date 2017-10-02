@@ -171,11 +171,11 @@ public class Zip {
 
             do {
                 if isDirectory {
-                    try fileManager.createDirectory(atPath: fullPath, withIntermediateDirectories: true, attributes: directoryAttributes)
+                    try fileManager.createDirectory(atPath: fullPath, withIntermediateDirectories: true, attributes: directoryAttributes as? [String:Any])
                 }
                 else {
                     let parentDirectory = (fullPath as NSString).deletingLastPathComponent
-                    try fileManager.createDirectory(atPath: parentDirectory, withIntermediateDirectories: true, attributes: directoryAttributes)
+                    try fileManager.createDirectory(atPath: parentDirectory, withIntermediateDirectories: true, attributes: directoryAttributes as? [String:Any])
                 }
             } catch {}
             if fileManager.fileExists(atPath: fullPath) && !isDirectory && !overwrite {
